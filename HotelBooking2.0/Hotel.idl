@@ -1,0 +1,7 @@
+module CorbaHotelServer {
+		interface Hotel{
+			string book(in string str);
+			boolean order(in string str);
+			boolean delete(in string orderid);
+		};
+};

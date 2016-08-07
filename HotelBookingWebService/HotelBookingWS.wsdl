@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://server" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://server">
+    <wsdl:documentation>HotelBookingWS</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://server">
+            <xs:element name="HotelBookingWSException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="HotelBookingWSException" nillable="true" type="ns:Exception"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="register">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="psw" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="delete">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="orderid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="query">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="queryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="order">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="str" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="orderResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="logIn">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="psw" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="logInResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="quit">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="queryhotel">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="line" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="queryhotelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="manage">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="str" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="manageResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="book">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="str" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="bookResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="queryRequest">
+        <wsdl:part name="parameters" element="ns:query"/>
+    </wsdl:message>
+    <wsdl:message name="queryResponse">
+        <wsdl:part name="parameters" element="ns:queryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HotelBookingWSException">
+        <wsdl:part name="parameters" element="ns:HotelBookingWSException"/>
+    </wsdl:message>
+    <wsdl:message name="bookRequest">
+        <wsdl:part name="parameters" element="ns:book"/>
+    </wsdl:message>
+    <wsdl:message name="bookResponse">
+        <wsdl:part name="parameters" element="ns:bookResponse"/>
+    </wsdl:message>
+    <wsdl:message name="quitRequest">
+        <wsdl:part name="parameters" element="ns:quit"/>
+    </wsdl:message>
+    <wsdl:message name="queryhotelRequest">
+        <wsdl:part name="parameters" element="ns:queryhotel"/>
+    </wsdl:message>
+    <wsdl:message name="queryhotelResponse">
+        <wsdl:part name="parameters" element="ns:queryhotelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="logInRequest">
+        <wsdl:part name="parameters" element="ns:logIn"/>
+    </wsdl:message>
+    <wsdl:message name="logInResponse">
+        <wsdl:part name="parameters" element="ns:logInResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteRequest">
+        <wsdl:part name="parameters" element="ns:delete"/>
+    </wsdl:message>
+    <wsdl:message name="deleteResponse">
+        <wsdl:part name="parameters" element="ns:deleteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerRequest">
+        <wsdl:part name="parameters" element="ns:register"/>
+    </wsdl:message>
+    <wsdl:message name="registerResponse">
+        <wsdl:part name="parameters" element="ns:registerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="orderRequest">
+        <wsdl:part name="parameters" element="ns:order"/>
+    </wsdl:message>
+    <wsdl:message name="orderResponse">
+        <wsdl:part name="parameters" element="ns:orderResponse"/>
+    </wsdl:message>
+    <wsdl:message name="manageRequest">
+        <wsdl:part name="parameters" element="ns:manage"/>
+    </wsdl:message>
+    <wsdl:message name="manageResponse">
+        <wsdl:part name="parameters" element="ns:manageResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="HotelBookingWSPortType">
+        <wsdl:operation name="query">
+            <wsdl:input message="ns:queryRequest" wsaw:Action="urn:query"/>
+            <wsdl:output message="ns:queryResponse" wsaw:Action="urn:queryResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:queryHotelBookingWSException"/>
+        </wsdl:operation>
+        <wsdl:operation name="book">
+            <wsdl:input message="ns:bookRequest" wsaw:Action="urn:book"/>
+            <wsdl:output message="ns:bookResponse" wsaw:Action="urn:bookResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:bookHotelBookingWSException"/>
+        </wsdl:operation>
+        <wsdl:operation name="quit">
+            <wsdl:input message="ns:quitRequest" wsaw:Action="urn:quit"/>
+        </wsdl:operation>
+        <wsdl:operation name="queryhotel">
+            <wsdl:input message="ns:queryhotelRequest" wsaw:Action="urn:queryhotel"/>
+            <wsdl:output message="ns:queryhotelResponse" wsaw:Action="urn:queryhotelResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:queryhotelHotelBookingWSException"/>
+        </wsdl:operation>
+        <wsdl:operation name="logIn">
+            <wsdl:input message="ns:logInRequest" wsaw:Action="urn:logIn"/>
+            <wsdl:output message="ns:logInResponse" wsaw:Action="urn:logInResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:logInHotelBookingWSException"/>
+        </wsdl:operation>
+        <wsdl:operation name="delete">
+            <wsdl:input message="ns:deleteRequest" wsaw:Action="urn:delete"/>
+            <wsdl:output message="ns:deleteResponse" wsaw:Action="urn:deleteResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:deleteHotelBookingWSException"/>
+        </wsdl:operation>
+        <wsdl:operation name="register">
+            <wsdl:input message="ns:registerRequest" wsaw:Action="urn:register"/>
+            <wsdl:output message="ns:registerResponse" wsaw:Action="urn:registerResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:registerHotelBookingWSException"/>
+        </wsdl:operation>
+        <wsdl:operation name="order">
+            <wsdl:input message="ns:orderRequest" wsaw:Action="urn:order"/>
+            <wsdl:output message="ns:orderResponse" wsaw:Action="urn:orderResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:orderHotelBookingWSException"/>
+        </wsdl:operation>
+        <wsdl:operation name="manage">
+            <wsdl:input message="ns:manageRequest" wsaw:Action="urn:manage"/>
+            <wsdl:output message="ns:manageResponse" wsaw:Action="urn:manageResponse"/>
+            <wsdl:fault message="ns:HotelBookingWSException" name="HotelBookingWSException" wsaw:Action="urn:manageHotelBookingWSException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="HotelBookingWSSoap11Binding" type="ns:HotelBookingWSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="query">
+            <soap:operation soapAction="urn:query" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="book">
+            <soap:operation soapAction="urn:book" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="quit">
+            <soap:operation soapAction="urn:quit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="queryhotel">
+            <soap:operation soapAction="urn:queryhotel" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="logIn">
+            <soap:operation soapAction="urn:logIn" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="delete">
+            <soap:operation soapAction="urn:delete" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="register">
+            <soap:operation soapAction="urn:register" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="order">
+            <soap:operation soapAction="urn:order" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="manage">
+            <soap:operation soapAction="urn:manage" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="HotelBookingWSSoap12Binding" type="ns:HotelBookingWSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="query">
+            <soap12:operation soapAction="urn:query" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="book">
+            <soap12:operation soapAction="urn:book" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="quit">
+            <soap12:operation soapAction="urn:quit" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="queryhotel">
+            <soap12:operation soapAction="urn:queryhotel" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="logIn">
+            <soap12:operation soapAction="urn:logIn" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="delete">
+            <soap12:operation soapAction="urn:delete" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="register">
+            <soap12:operation soapAction="urn:register" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="order">
+            <soap12:operation soapAction="urn:order" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="manage">
+            <soap12:operation soapAction="urn:manage" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="HotelBookingWSException">
+                <soap12:fault use="literal" name="HotelBookingWSException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="HotelBookingWSHttpBinding" type="ns:HotelBookingWSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="query">
+            <http:operation location="query"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="book">
+            <http:operation location="book"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="quit">
+            <http:operation location="quit"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="queryhotel">
+            <http:operation location="queryhotel"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="logIn">
+            <http:operation location="logIn"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="delete">
+            <http:operation location="delete"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="register">
+            <http:operation location="register"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="order">
+            <http:operation location="order"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="manage">
+            <http:operation location="manage"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HotelBookingWS">
+        <wsdl:port name="HotelBookingWSHttpSoap11Endpoint" binding="ns:HotelBookingWSSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/HotelBookingWS.HotelBookingWSHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HotelBookingWSHttpSoap12Endpoint" binding="ns:HotelBookingWSSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/HotelBookingWS.HotelBookingWSHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HotelBookingWSHttpEndpoint" binding="ns:HotelBookingWSHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/HotelBookingWS.HotelBookingWSHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
